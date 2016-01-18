@@ -10,7 +10,6 @@ public class WebVerticle extends AbstractVerticle {
 	@Override
 	public void start(Future<Void> fut) throws Exception{
 		
-//		HttpServerOptions serverOptions = new HttpServerOptions().setMaxWebsocketFrameSize(1000000);
 		HttpServer server = vertx.createHttpServer();
 		Router router = Router.router(vertx);
 
