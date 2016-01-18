@@ -1,4 +1,4 @@
-package xyz.dinwy.blog;
+package xyz.dinwy.blog.local;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
@@ -10,15 +10,14 @@ public class WebVerticle extends AbstractVerticle {
 	@Override
 	public void start(Future<Void> fut) throws Exception{
 		
-//		HttpServerOptions serverOptions = new HttpServerOptions().setMaxWebsocketFrameSize(1000000);
 		HttpServer server = vertx.createHttpServer();
 		Router router = Router.router(vertx);
 
-		router.route("/").handler(StaticHandler.create().setWebRoot("../app-root/repo/webroot").setCachingEnabled(true));
+		router.route("/").handler(StaticHandler.create().setWebRoot("webroot").setCachingEnabled(true));
 		router.route("/api/*").handler(StaticHandler.create("api").setCachingEnabled(false));
-		
+
 		server.requestHandler(router::accept)
-		.listen(Integer.getInteger("http.port", 8080), System.getProperty("http.address"),result -> {
+		.listen(Integer.getInteger("http.port", 8080), result -> {
 	        if (result.succeeded()) {
 	            fut.complete();
 	          } else {
