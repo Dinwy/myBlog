@@ -15,6 +15,7 @@ public class WebVerticle extends AbstractVerticle {
 		Router router = Router.router(vertx);
 
 		router.route("/").handler(StaticHandler.create().setWebRoot("../app-root/repo/webroot").setCachingEnabled(true));
+		router.route("/static/*").handler(StaticHandler.create().setWebRoot("../app-root/repo/webroot/static").setCachingEnabled(true));
 		router.route("/api/*").handler(StaticHandler.create("api").setCachingEnabled(false));
 		
 		server.requestHandler(router::accept)
