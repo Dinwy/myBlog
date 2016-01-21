@@ -16,6 +16,7 @@ import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.AuthHandler;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.CookieHandler;
+import io.vertx.ext.web.handler.FormLoginHandler;
 import io.vertx.ext.web.handler.RedirectAuthHandler;
 import io.vertx.ext.web.handler.SessionHandler;
 import io.vertx.ext.web.handler.StaticHandler;
@@ -43,31 +44,36 @@ public class WebVerticle extends AbstractVerticle {
 	    AuthProvider authProvider = ShiroAuth.create(vertx, SAO);
 	    router.route().handler(UserSessionHandler.create(authProvider));
 //	    ShiroAuth Setting
-	    AuthHandler redirectAuthHandler = RedirectAuthHandler.create(authProvider,"/login");
-	    
-	    router.route("/login").handler(routingContext -> {
+	    AuthHandler redirectAuthHandler = RedirectAuthHandler.create(authProvider,"/signin");
+
+	    router.route("/signin").handler(routingContext -> {
 			HttpServerResponse response = routingContext.response();
 			response.putHeader("content-type", "text/html;")
 					.sendFile("webroot/view/signin.html");
 		});
+
+	    router.route("/loginhandler").handler(FormLoginHandler.create(authProvider));
 	    
 	    router.route("/admin/*").handler(redirectAuthHandler);
-
+	    
 	    router.route("/admin/*").handler(StaticHandler.create().setWebRoot("webroot/admin").setCachingEnabled(false));
 		router.route("/view/*").handler(StaticHandler.create().setWebRoot("webroot/view").setCachingEnabled(true));
 		router.route("/").handler(StaticHandler.create().setWebRoot("webroot").setCachingEnabled(true));
 		router.route("/static/*").handler(StaticHandler.create().setWebRoot("webroot/static").setCachingEnabled(true));
 		router.route("/api/*").handler(StaticHandler.create("api").setCachingEnabled(false));
 	    
-	    router.post("/signin").handler(routingContext -> {
-			HttpServerRequest request = routingContext.request();
+	    router.post("/admin/dashboard").handler(routingContext -> {
+			HttpServerResponse response = routingContext.response();
+			response.putHeader("content-type", "text/html;")
+					.sendFile("webroot/admin/dashboard.html");
+/*			HttpServerRequest request = routingContext.request();
 			JsonObject userInfo = new JsonObject();
 			userInfo.put("ID", request.getFormAttribute("ID"));
 			userInfo.put("PSW", request.getFormAttribute("PSW"));
 			System.out.println(Json.encodePrettily(userInfo) + " json userinfo");
 			//https://github.com/vert-x3/vertx-examples/blob/master/web-examples/src/main/java/io/vertx/example/web/angular_realtime/Server.java
 			UserDAO userDAO = new UserDAO();
-			userDAO.certify(vertx, client, routingContext, userInfo.getString("ID"), userInfo.getString("PSW"));
+			userDAO.certify(vertx, client, routingContext, userInfo.getString("ID"), userInfo.getString("PSW"));*/
 		});
 	    
 	    router.route("/logout").handler(context -> {

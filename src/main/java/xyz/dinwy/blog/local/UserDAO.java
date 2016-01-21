@@ -69,6 +69,7 @@ public class UserDAO{
 		    	    });
 		    		routingContext.setUser(user);
 //		    		System.out.println(routingContext.user());
+
 			        routingContext.response().sendFile("webroot/admin/dashboard.html").setStatusCode(200);
 		    		} else {
 			    	    res.cause().printStackTrace();
