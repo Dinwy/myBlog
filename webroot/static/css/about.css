@@ -1,0 +1,8 @@
+.bg-img-about{
+background-image: url("//i.imgur.com/vqGKOJO.jpg");
+background-position: 50% 50%;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+height:300px;
+}

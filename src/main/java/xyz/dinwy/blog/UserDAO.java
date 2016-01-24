@@ -42,12 +42,12 @@ public class UserDAO{
 			    		return;
 		    	};
 		    	JsonObject authInfo = null;
-		    	if(loginID.equals("admin")){
+		    	if(loginID.equals("adminAccount")){
 		    		authInfo = new JsonObject().put("username", "admin").put("password", "admin");
 		    	}else{
 		    		authInfo = new JsonObject().put("username", "user").put("password", "user");	
 		    	}
-			    JsonObject config = new JsonObject().put("properties_path", "misc/vertx-users.properties");
+			    JsonObject config = new JsonObject().put("properties_path", "../app-root/repo/misc/vertx-users.properties");
 			    ShiroAuthOptions SAO = new ShiroAuthOptions().setConfig(config).setType(ShiroAuthRealmType.PROPERTIES);
 			    AuthProvider authProvider = ShiroAuth.create(vertx, SAO);
 		    	authProvider.authenticate(authInfo, resA -> {
@@ -67,9 +67,7 @@ public class UserDAO{
 		    	    	}
 		    	    });
 		    		routingContext.setUser(user);
-//		    		System.out.println(routingContext.user());
 			        routingContext.response().putHeader("location", "/admin/dashboard").setStatusCode(301).end();
-//			        routingContext.response().sendFile("webroot/admin/dashboard.html").setStatusCode(200);
 		    		} else {
 			    	    res.cause().printStackTrace();
 			    	  }

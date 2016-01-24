@@ -42,6 +42,12 @@ public class WebVerticle extends AbstractVerticle {
 	    ShiroAuthOptions SAO = new ShiroAuthOptions().setConfig(config).setType(ShiroAuthRealmType.PROPERTIES);
 	    AuthProvider authProvider = ShiroAuth.create(vertx, SAO);
 	    router.route().handler(UserSessionHandler.create(authProvider));
+
+	    router.route("/about").handler(routingContext -> {
+			HttpServerResponse response = routingContext.response();
+			response.putHeader("content-type", "text/html;")
+					.sendFile("webroot/view/about.html");
+		});
 	    
 //	    redirectAuthHandler Setting
 	    AuthHandler redirectAuthHandler = RedirectAuthHandler.create(authProvider,"/signin");

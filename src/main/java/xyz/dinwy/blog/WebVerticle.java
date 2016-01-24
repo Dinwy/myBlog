@@ -21,8 +21,6 @@ import io.vertx.ext.web.handler.SessionHandler;
 import io.vertx.ext.web.handler.StaticHandler;
 import io.vertx.ext.web.handler.UserSessionHandler;
 import io.vertx.ext.web.sstore.LocalSessionStore;
-import xyz.dinwy.blog.local.JDBCVerticle;
-import xyz.dinwy.blog.local.UserDAO;
 
 public class WebVerticle extends AbstractVerticle {
 	@Override
@@ -40,10 +38,16 @@ public class WebVerticle extends AbstractVerticle {
 //	        .setCookieSecureFlag(false)
 	    );
 
-	    JsonObject config = new JsonObject().put("properties_path", "../app-root/repomisc/vertx-users.properties");
+	    JsonObject config = new JsonObject().put("properties_path", "../app-root/repo/misc/vertx-users.properties");
 	    ShiroAuthOptions SAO = new ShiroAuthOptions().setConfig(config).setType(ShiroAuthRealmType.PROPERTIES);
 	    AuthProvider authProvider = ShiroAuth.create(vertx, SAO);
 	    router.route().handler(UserSessionHandler.create(authProvider));
+	 
+	    router.route("/about").handler(routingContext -> {
+			HttpServerResponse response = routingContext.response();
+			response.putHeader("content-type", "text/html;")
+					.sendFile("../app-root/repo/webroot/view/about.html");
+		});
 	    
 //	    redirectAuthHandler Setting
 	    AuthHandler redirectAuthHandler = RedirectAuthHandler.create(authProvider,"/signin");
