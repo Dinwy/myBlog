@@ -1,4 +1,4 @@
-package xyz.dinwy.blog.local;
+package xyz.dinwy.blog;
 
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServerResponse;
