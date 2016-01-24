@@ -1,8 +1,39 @@
-.bg-img-about{
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body{
+	height:2048px;
+	font-family: 'Nanum Gothic', sans-serif !important; 
+}
+
+.about-intro{
 background-image: url("//i.imgur.com/vqGKOJO.jpg");
 background-position: 50% 50%;
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: cover;
 height:300px;
+padding:30px;
+text-align: center;
+}
+
+.about-skills{
+background-color: #395B5B;
+height:300px;
+padding:30px;
+text-align: center;
+color:white;
+}
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0px;
+    right: 1%;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #F5F5F5;
+    border-right: 1px solid #EEE;
 }
