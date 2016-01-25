@@ -1,8 +1,15 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 body{
-	height:2048px;
 	font-family: 'Nanum Gothic', sans-serif !important; 
+}
+
+.text-card{
+    color: black;
+    text-shadow: 2px 2px 5px white;
+background-color:rgba(255,250,230,0.7);
+    border: 1px solid #a1a1a1;
+    padding: 10px 40px; 
 }
 
 .about-intro{
@@ -16,7 +23,7 @@ padding:30px;
 text-align: center;
 }
 
-.about-skills{
+.about-box{
 background-color: #395B5B;
 height:300px;
 padding:30px;

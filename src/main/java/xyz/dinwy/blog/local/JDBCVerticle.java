@@ -12,8 +12,8 @@ public class JDBCVerticle {
 				  .put("url", "jdbc:mysql://localhost:3306/test")
 				  .put("driver_class", "com.mysql.jdbc.Driver")
 				  .put("max_pool_size", 15)
-				  .put("user", "aisuser")
-				  .put("password", "aisuser");
+				  .put("user", "test")
+				  .put("password", "test");
 			JDBCClient client = JDBCClient.createShared(vertx, config);
 			return client;
 	  }
