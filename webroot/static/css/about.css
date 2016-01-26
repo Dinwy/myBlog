@@ -1,5 +1,21 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
+.logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    list-style: outside none none;
+    margin: 0px 0px 3rem;
+    padding: 0px;
+}
+
+.logos > li img {
+    margin: 0px auto;
+	height: 100px;
+	width: 200px;
+    transition: all 0.4s ease 0s;
+}
+
 body{
 	font-family: 'Nanum Gothic', sans-serif !important; 
 }
