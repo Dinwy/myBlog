@@ -8,7 +8,7 @@ plugins {
 compileJava.options.encoding = 'UTF-8'
  	
 sourceCompatibility = '1.8'
-version = '0.3'
+version = '0.4'
 jar {
     manifest {
    		 attributes("Implementation-Title": "Gradle", "Implementation-Version": version)

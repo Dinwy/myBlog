@@ -13,6 +13,7 @@ import io.vertx.ext.auth.shiro.ShiroAuthOptions;
 import io.vertx.ext.auth.shiro.ShiroAuthRealmType;
 import io.vertx.ext.jdbc.JDBCClient;
 import io.vertx.ext.web.Router;
+import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.AuthHandler;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.CookieHandler;
@@ -67,10 +68,16 @@ public class WebVerticle extends AbstractVerticle {
 					.sendFile("webroot/admin/dashboard.html");
 		});
 	    
+	    router.route("/admin/posts").handler(routingContext -> {
+	    	System.out.println("admin/posts");
+			HttpServerResponse response = routingContext.response();
+			response.putHeader("content-type", "text/html;")
+					.sendFile("webroot/admin/posts.html");
+		});
+	    
 		router.route("/view/*").handler(StaticHandler.create().setWebRoot("webroot/view").setCachingEnabled(true));
 		router.route("/").handler(StaticHandler.create().setWebRoot("webroot").setCachingEnabled(true));
 		router.route("/static/*").handler(StaticHandler.create().setWebRoot("webroot/static").setCachingEnabled(true));
-		router.route("/api/*").handler(StaticHandler.create("api").setCachingEnabled(false));
 	    router.post("/api/signin").handler(routingContext -> {
 			HttpServerRequest request = routingContext.request();
 			JsonObject userInfo = new JsonObject();
@@ -89,6 +96,17 @@ public class WebVerticle extends AbstractVerticle {
 	        context.response().putHeader("location", "/").setStatusCode(301).end();
 	    });
 
+	    router.get("/api/userInfo").handler(this::getUserInfo);
+	    router.get("/announcements").handler(this::redirectToABB);
+	    router.get("/announcements/:num/:subject").handler(this::redirectMessageBB);
+	    router.get("/api/posts").handler(this::getPosts);
+	    router.get("/api/posts/count").handler(this::countPosts);
+	    router.get("/api/posts/:num/:subject").handler(this::redirectMessageBB);
+	    router.get("/api/posts/:num").handler(this::getOneMessageBB);
+	    router.post("/api/posts").handler(this::addMessageBB);
+	    router.route("/webroot/*").handler(StaticHandler.create().setWebRoot("webroot").setCachingEnabled(true));
+		router.route("/api/*").handler(StaticHandler.create("api").setCachingEnabled(false));
+ 
 		server.requestHandler(router::accept)
 		.listen(Integer.getInteger("http.port", 8080), result -> {
 	        if (result.succeeded()) {
@@ -97,5 +115,74 @@ public class WebVerticle extends AbstractVerticle {
 	            fut.fail(result.cause());
 	          }
         });
+	}
+	
+	private void redirectToABB(RoutingContext routingContext) {
+    	routingContext.reroute("/api/bulletinBoard");
+	}
+	
+	private void getUserInfo(RoutingContext routingContext) {
+		System.out.println("getUserInfo called!");
+		routingContext.response()
+					  .putHeader("content-type", "application/json; charset=utf-8")
+					  .end(Json.encodePrettily(routingContext.session().get("userInfo")));
+	}
+
+	private void countPosts(RoutingContext routingContext) {
+		System.out.println("getMessage called!");
+		JDBCClient client = JDBCVerticle.getJDBCinfo(vertx);
+		PostsDAO MBDAO = new PostsDAO();
+		MBDAO.countMessagesBB(vertx, client, routingContext);
+	}
+	
+	private void getPosts(RoutingContext routingContext) {
+		String pageNum = routingContext.request().getParam("page");
+		if(pageNum == null){
+			pageNum = "1";	
+		};
+		System.out.println("getPosts called!");
+		JDBCClient client = JDBCVerticle.getJDBCinfo(vertx);
+		PostsDAO MBDAO = new PostsDAO();
+		MBDAO.getPosts(vertx, client, routingContext, pageNum);
+	}
+
+	private void redirectMessageBB(RoutingContext routingContext) {
+		HttpServerResponse response = routingContext.response();
+		response.putHeader("content-type", "text/html;")
+				.sendFile("webroot/view/boardData.html");
+	}
+	
+	private void getOneMessageBB(RoutingContext routingContext) {
+		String num = routingContext.request().getParam("num");
+		System.out.println("getOneMessage called!");
+		JDBCClient client = JDBCVerticle.getJDBCinfo(vertx);
+		PostsDAO MBDAO = new PostsDAO();
+		MBDAO.getOneMessageBB(vertx, client, num, routingContext);
+	}
+
+	private void addMessageBB(RoutingContext routingContext) {
+		System.out.println("addBulletinBoard called!");
+		System.out.println(routingContext.user().isAuthorised("role:*", res -> {
+	    	if (res.succeeded()) {
+	    		boolean hasAuthority = res.result();
+	    	    if (hasAuthority) {
+	    	    	System.out.println("User has a authority BB");
+	    	    	String messageData = Json.encodePrettily(routingContext.getBodyAsJson());
+	    	    	System.out.println(routingContext.getBodyAsJson());
+	    	    	System.out.println(messageData);
+	    			JDBCClient client = JDBCVerticle.getJDBCinfo(vertx);
+	    			PostsDAO MBDAO = new PostsDAO();
+	    			MBDAO.addMessageBB(vertx, client, routingContext.getBodyAsJson(), routingContext);
+	    	    } else {
+	    	      System.out.println("User does not have a authority NONO");
+	    	      routingContext.response().setStatusCode(401)
+	    	      .putHeader("content-type", "text/plain; charset=utf-8")
+	    	      .end("권한이 없습니다.");
+	    	      return;
+	    	    }
+	        } else {
+	    	    res.cause().printStackTrace();
+	    	}
+	    }));
 	}
 }

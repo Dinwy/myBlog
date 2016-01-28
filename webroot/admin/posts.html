@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>DashBoard</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/dashboard.css">
+
+</head>
+<div class="container">
+<div class="masthead">
+<div class="headerContainer">
+<h3 class="text-muted">AIS 홈페이지</h3>
+<h3 id="userName">      </h3>
+</div>
+<nav>
+<ul class="nav nav-justified">
+<li><a href="#">홈</a></li>
+<li class="active"><a href="#">게시판</a></li>
+<li><a href="#">연락 사항</a></li>
+<li><a href="#">현장 현황</a></li>
+<li><a href="#">주보 작성</a></li>
+<li><a href="#">출・퇴근표</a></li>
+</ul>
+</nav>
+</div>
+<!-- Jumbotron -->
+<div class="wrapper">
+<ul class="nav nav-justified">
+<li class="active"><a href="#">공지 게시판</a></li>
+<li><a href="#">자유 게시판</a></li>
+</ul>
+<!-- Example row of columns -->
+<div class="Board">
+<ul class="list-group" id="BBoard">
+</ul>
+</div>
+<div class="btnContainer">
+<div id="pager"></div>
+<p><a class="btn btn-primary" href="/webroot/view/boardData.html" role="button">List &raquo;</a></p>
+<p><a class="btn btn-success" href="#" role="button" data-toggle="modal" data-target="#myModal">Write &raquo;</a></p>
+<!--<button type="button" class="btn btn-lg btn-info btn-block">Add New Post</button>-->
+</div>
+</div>
+<hr></hr>
+<footer class="footer">
+<p>&copy; AIS Company 2015</p>
+</footer>
+<!-- /container -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" id="myModalLabel">Post New Notice</h4>
+</div>
+<div class="modal-body">
+<form class="form-horizontal">
+<div class="form-group form-group-lg">
+<label class="col-sm-2 control-label" for="formGroupInputLarge">Subject</label>
+<div class="col-sm-10">
+<input id="BBTitle" class="form-control" type="text" id="formGroupInputLarge" placeholder="Title input">
+</div>
+</div>
+<div class="form-group form-group-lg">
+<label class="col-sm-2 control-label" for="formGroupInputLarge">Message</label>
+<div class="col-sm-10">
+<textarea id="BBContents" class="form-control" id="formGroupInputLarge" rows="20" placeholder="Contents input">
+</textarea>
+</div>
+</div>
+</form>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<button id="addMessageBB" type="button" class="btn btn-primary">Post</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+//유저 정보 받아오기 기능
+function getUserInfo(){
+var xhttp;
+xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (xhttp.readyState == 4 && xhttp.status == 200) {
+document.getElementById("userName").innerHTML = JSON.parse(xhttp.responseText).name;
+sessionStorage.setItem('userInfo',xhttp.responseText);
+}else if(xhttp.readyState == 4 && xhttp.status == 400){
+alert(xhttp.responseText);
+};
+}
+xhttp.open("GET", encodeURI('/api/userInfo'), true);
+xhttp.setRequestHeader('Content-Type', 'application/json');
+xhttp.send();
+};
+//게시글 작성 기능
+function addMessageBB(){
+var title = document.getElementById("BBTitle").value;
+var body = document.getElementById("BBContents").value;
+var userName = JSON.parse(sessionStorage.getItem('userInfo')).name;
+var messageData = JSON.stringify({userName: userName, title: title, body : body });
+var xhttp;
+xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (xhttp.readyState == 4 && xhttp.status == 201) {
+alert(xhttp.responseText);
+$(function () {
+   $('#myModal').modal('toggle');
+});
+}else if(xhttp.readyState == 4 && xhttp.status == 401){
+alert(xhttp.responseText);
+$(function () {
+   $('#myModal').modal('toggle');
+});
+}
+}
+xhttp.open("POST", encodeURI('/api/bulletinBoard'), true);
+xhttp.setRequestHeader('Content-Type', 'application/json');
+xhttp.send(messageData);
+};
+getUserInfo();
+</script>
+<script type="text/javascript">
+//URL 파라메터 받기 기능
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}
+</script>
+<script type="text/javascript">
+document.getElementById("addMessageBB").addEventListener("click", function( event ) {
+addMessageBB();
+}, false);
+</script>
+<script type="text/javascript">
+function getOneMessageBB(){
+var title = document.getElementById("BBTitle").value;
+var body = document.getElementById("BBContents").value;
+var userName = JSON.parse(sessionStorage.getItem('userInfo')).name;
+var messageData = JSON.stringify({userName: userName, title: title, body : body });
+var xhttp;
+xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (xhttp.readyState == 4 && xhttp.status == 200) {
+alert(xhttp.responseText);
+}else if(xhttp.readyState == 4 && xhttp.status == 400){
+alert(xhttp.responseText);
+}
+}
+xhttp.open("POST", encodeURI('/api/bulletinBoard'), true);
+xhttp.setRequestHeader('Content-Type', 'application/json');
+xhttp.send(messageData);
+};
+getUserInfo();
+</script>
+<script type="text/javascript">
+// 게시글 정보를 불러오기 위해 리다이렉트
+function showBoard(id){
+window.location.href = "announcements/" + id.childNodes[0].innerHTML + '/' + id.childNodes[2].innerHTML;
+};
+</script>
+<script type="text/javascript">
+var pg = document.getElementById("pager");
+// 모든 게시글 숫자 세고, 페이지 목록 표시
+function countBoardMessages(){
+var xhttp;
+xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function(){
+if (xhttp.readyState == 4 && xhttp.status == 200) {
+var messageCount = xhttp.responseText/5;
+if(messageCount <= 5){
+for(i = 1; i < messageCount + 1;i++){
+var a = document.createElement("a");
+if(getURLParameter('page')==i){
+a.className = "page-numbers current";
+}else if(getURLParameter('page') == null){
+if(i == 1){
+var a = document.createElement("a");
+a.className = "page-numbers current";
+}else{
+a.className = "page-numbers";
+}
+}else{
+a.className = "page-numbers";
+}
+a.href = "/announcements?page=" + i;
+var t = document.createTextNode(i);
+a.appendChild(t);
+pg.appendChild(a);
+}
+} // end of if msg count <=5
+else{
+for(i = 1; i < 6;i++){
+var a = document.createElement("a");
+if(getURLParameter('page')==i){
+a.className = "page-numbers current";
+}else if(getURLParameter('page') == null){
+if(i == 1){
+var a = document.createElement("a");
+a.className = "page-numbers current";
+}else if(i==6){
+alert(xhttp.responseText);
+var a = document.createElement("a");
+a.className = "page-numbers";
+a.href = "/announcements?page=" + xhttp.responseText;
+var t = document.createTextNode(xhttp.responseText);
+a.appendChild(t);
+pg.appendChild(a);
+return;
+}else{
+a.className = "page-numbers";
+}
+}else{
+a.className = "page-numbers";
+}
+a.href = "/announcements?page=" + i;
+var t = document.createTextNode(i);
+a.appendChild(t);
+pg.appendChild(a);
+}
+}
+}else{}
+}
+xhttp.open("GET", encodeURI('/api/bulletinBoard/count'), true);
+xhttp.setRequestHeader('Content-Type', 'text/plain');
+xhttp.send();
+}
+countBoardMessages();
+</script>
+<script type="text/javascript">
+document.onreadystatechange = function () {
+	  if (document.readyState == "complete") {
+var ul = document.getElementById("BBoard");
+function getBulletinBoard(){
+var submitToServer = function() {
+var xhttp;
+xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (xhttp.readyState == 4 && xhttp.status == 200) {
+var data = JSON.parse(xhttp.responseText);
+data.forEach(function(value, i) {
+var li = document.createElement("li");
+var div = document.createElement("div");
+var t = document.createTextNode(data[i][0]);
+div.appendChild(t);
+div.className ="hidden";
+li.appendChild(div);
+var div = document.createElement("div");
+var t = document.createTextNode(moment(data[i][4]).format("YYYY-MM-DD")); 
+div.appendChild(t);
+li.appendChild(div);
+var div = document.createElement("div");
+div.className = "messageHeader";
+var t = document.createTextNode(data[i][2]); 
+div.appendChild(t);
+li.appendChild(div);
+var div = document.createElement("div");
+if(data[i][3].length >= 300){
+var subString = data[i][3].substring(0,299) + " ...";
+}else{
+var subString = data[i][3];
+}
+var t = document.createTextNode(subString); 
+div.appendChild(t);
+li.appendChild(div);
+var div = document.createElement("div");
+var t = document.createTextNode(data[i][1]); 
+div.appendChild(t);
+div.className="writer";
+li.appendChild(div);
+li.setAttribute("onclick",'showBoard(this)');
+li.className = "list-group-item list-group-item-info";
+ul.appendChild(li);
+});
+}else if(xhttp.readyState == 4 && xhttp.status == 400){
+alert(xhttp.responseText);
+};
+}
+xhttp.open("GET", encodeURI('/api/bulletinBoard?page=' + getURLParameter('page')), true);
+xhttp.setRequestHeader('Content-Type', 'application/json');
+xhttp.send();
+}
+submitToServer();
+};
+getBulletinBoard();
+	  }
+}
+</script>
+</body>
+</html>
