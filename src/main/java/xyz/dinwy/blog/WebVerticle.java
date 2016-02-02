@@ -13,6 +13,7 @@ import io.vertx.ext.auth.shiro.ShiroAuthOptions;
 import io.vertx.ext.auth.shiro.ShiroAuthRealmType;
 import io.vertx.ext.jdbc.JDBCClient;
 import io.vertx.ext.web.Router;
+import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.AuthHandler;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.CookieHandler;
@@ -45,15 +46,14 @@ public class WebVerticle extends AbstractVerticle {
 	 
 	    router.route("/about").handler(routingContext -> {
 			HttpServerResponse response = routingContext.response();
-			response.putHeader("content-type", "text/html;")
-					.sendFile("../app-root/repo/webroot/view/about.html");
+			response.sendFile("../app-root/repo/webroot/view/about.html");
 		});
 	    
 //	    redirectAuthHandler Setting
 	    AuthHandler redirectAuthHandler = RedirectAuthHandler.create(authProvider,"/signin");
 	    router.route("/signin").handler(routingContext -> {
 			HttpServerResponse response = routingContext.response();
-			response.putHeader("content-type", "text/html;")
+			response.putHeader("content-type", "text/html")
 					.sendFile("../app-root/repo/webroot/view/signin.html");
 		});
 	    
@@ -63,14 +63,20 @@ public class WebVerticle extends AbstractVerticle {
 	    router.route("/admin/dashboard").handler(routingContext -> {
 	    	System.out.println("admin/dashboard");
 			HttpServerResponse response = routingContext.response();
-			response.putHeader("content-type", "text/html;")
+			response.putHeader("content-type", "text/html")
 					.sendFile("../app-root/repo/webroot/admin/dashboard.html");
 		});
 	    
+	    router.route("/admin/posts").handler(routingContext -> {
+	    	System.out.println("admin/posts");
+			HttpServerResponse response = routingContext.response();
+			response.putHeader("content-type", "text/html")
+					.sendFile("../app-root/repo/webroot/admin/posts.html");
+		});
+	    
+	    router.route("/").handler(StaticHandler.create("../app-root/repo/webroot").setCachingEnabled(true));
 		router.route("/view/*").handler(StaticHandler.create().setWebRoot("../app-root/repo/webroot/view").setCachingEnabled(true));
-		router.route("/").handler(StaticHandler.create().setWebRoot("../app-root/repo/webroot").setCachingEnabled(true));
-		router.route("/static/*").handler(StaticHandler.create().setWebRoot("../app-root/repo/webroot/static").setCachingEnabled(true));
-		router.route("/api/*").handler(StaticHandler.create("api").setCachingEnabled(false));
+		router.route("/static/*").handler(StaticHandler.create("../app-root/repo/webroot/static").setCachingEnabled(true));
 	    router.post("/api/signin").handler(routingContext -> {
 			HttpServerRequest request = routingContext.request();
 			JsonObject userInfo = new JsonObject();

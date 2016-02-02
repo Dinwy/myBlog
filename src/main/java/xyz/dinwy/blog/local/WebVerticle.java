@@ -46,15 +46,14 @@ public class WebVerticle extends AbstractVerticle {
 
 	    router.route("/about").handler(routingContext -> {
 			HttpServerResponse response = routingContext.response();
-			response.putHeader("content-type", "text/html;")
-					.sendFile("webroot/view/about.html");
+			response.sendFile("webroot/view/about.html");
 		});
 	    
 //	    redirectAuthHandler Setting
 	    AuthHandler redirectAuthHandler = RedirectAuthHandler.create(authProvider,"/signin");
 	    router.route("/signin").handler(routingContext -> {
 			HttpServerResponse response = routingContext.response();
-			response.putHeader("content-type", "text/html;")
+			response.putHeader("content-type", "text/html")
 					.sendFile("webroot/view/signin.html");
 		});
 	    
@@ -64,20 +63,20 @@ public class WebVerticle extends AbstractVerticle {
 	    router.route("/admin/dashboard").handler(routingContext -> {
 	    	System.out.println("admin/dashboard");
 			HttpServerResponse response = routingContext.response();
-			response.putHeader("content-type", "text/html;")
+			response.putHeader("content-type", "text/html")
 					.sendFile("webroot/admin/dashboard.html");
 		});
 	    
 	    router.route("/admin/posts").handler(routingContext -> {
 	    	System.out.println("admin/posts");
 			HttpServerResponse response = routingContext.response();
-			response.putHeader("content-type", "text/html;")
+			response.putHeader("content-type", "text/html")
 					.sendFile("webroot/admin/posts.html");
 		});
 	    
+		router.route("/").handler(StaticHandler.create("webroot").setCachingEnabled(true));
 		router.route("/view/*").handler(StaticHandler.create().setWebRoot("webroot/view").setCachingEnabled(true));
-		router.route("/").handler(StaticHandler.create().setWebRoot("webroot").setCachingEnabled(true));
-		router.route("/static/*").handler(StaticHandler.create().setWebRoot("webroot/static").setCachingEnabled(true));
+		router.route("/static/*").handler(StaticHandler.create("webroot/static").setCachingEnabled(true));
 	    router.post("/api/signin").handler(routingContext -> {
 			HttpServerRequest request = routingContext.request();
 			JsonObject userInfo = new JsonObject();
@@ -132,7 +131,7 @@ public class WebVerticle extends AbstractVerticle {
 		System.out.println("getMessage called!");
 		JDBCClient client = JDBCVerticle.getJDBCinfo(vertx);
 		PostsDAO MBDAO = new PostsDAO();
-		MBDAO.countMessagesBB(vertx, client, routingContext);
+		MBDAO.countPosts(vertx, client, routingContext);
 	}
 	
 	private void getPosts(RoutingContext routingContext) {

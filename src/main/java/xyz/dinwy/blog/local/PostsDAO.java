@@ -14,7 +14,7 @@ import io.vertx.ext.web.RoutingContext;
 
 public class PostsDAO{
 
-	public void countMessagesBB(Vertx vertx,JDBCClient client,RoutingContext routingContext){
+	public void countPosts(Vertx vertx,JDBCClient client,RoutingContext routingContext){
 		client.getConnection(res -> {
 		if(res.succeeded()) {
 			SQLConnection connection = res.result();

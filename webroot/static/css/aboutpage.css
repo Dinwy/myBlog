@@ -1,0 +1,87 @@
+.img-circle {
+border-radius: 50%;
+width: 150px;
+height: 150px;
+transition: all 0.4s ease 0s;
+padding:10px;
+border: 10px solid #ccc;
+box-shadow: 5px 5px 5px #000;
+margin: 10px;
+}
+
+.type1 {
+background: #91FFFC;
+}
+.type2 {
+padding:0px !important;
+}
+.type3 {
+background: #6DFF80;
+}
+
+.logos {
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-start;
+list-style: outside none none;
+margin: 0px 0px 3rem;
+padding: 0px;
+}
+
+.text-card{
+    color: black;
+    text-shadow: 2px 2px 5px white;
+background-color:rgba(255,250,230,0.7);
+    border: 1px solid #a1a1a1;
+    padding: 10px 40px; 
+}
+
+.about-intro{
+background-image: url("//i.imgur.com/vqGKOJO.jpg");
+background-position: 50% 50%;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+height:300px;
+padding:30px;
+text-align: center;
+}
+
+.about-box{
+min-height:200px;
+padding:30px;
+text-align: center;
+background-color: rgb(238, 59, 22);
+color: white;
+}
+
+.about-box2{
+background-color: #EEE;
+color: black;
+min-height:200px;
+padding:30px;
+text-align: center;
+}
+
+.container > h1{
+font-size: 80px;
+text-shadow: 4px 3px 0px #ee3b16, 9px 8px 0px rgba(0, 0, 0, 0.15);
+}
+.container > h2{
+font-size: 50px;
+text-shadow: 2px 1px 0px #EEE, 5px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0px;
+    right: 1%;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #F5F5F5;
+    border-right: 1px solid #EEE;
+}

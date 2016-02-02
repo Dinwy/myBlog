@@ -42,7 +42,7 @@ public class UserDAO{
 			    		return;
 		    	};
 		    	JsonObject authInfo = null;
-		    	if(loginID.equals("admin")){
+		    	if(loginID.equals("adminAccount")){
 		    		authInfo = new JsonObject().put("username", "admin").put("password", "admin");
 		    	}else{
 		    		authInfo = new JsonObject().put("username", "user").put("password", "user");	
