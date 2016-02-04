@@ -4,10 +4,28 @@
 <title>Dinwy's Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-<link rel="stylesheet" type="text/css" href="static/css/blog.css">
-<link rel="stylesheet" type="text/css" href="static/css/aboutpage.css">
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+<script>
+(function(){'use strict';var f,g=[];function l(a){g.push(a);1==g.length&&f()}function m(){for(;g.length;)g[0](),g.shift()}f=function(){setTimeout(m)};function n(a){this.a=p;this.b=void 0;this.f=[];var b=this;try{a(function(a){q(b,a)},function(a){r(b,a)})}catch(c){r(b,c)}}var p=2;function t(a){return new n(function(b,c){c(a)})}function u(a){return new n(function(b){b(a)})}function q(a,b){if(a.a==p){if(b==a)throw new TypeError;var c=!1;try{var d=b&&b.then;if(null!=b&&"object"==typeof b&&"function"==typeof d){d.call(b,function(b){c||q(a,b);c=!0},function(b){c||r(a,b);c=!0});return}}catch(e){c||r(a,e);return}a.a=0;a.b=b;v(a)}}
+function r(a,b){if(a.a==p){if(b==a)throw new TypeError;a.a=1;a.b=b;v(a)}}function v(a){l(function(){if(a.a!=p)for(;a.f.length;){var b=a.f.shift(),c=b[0],d=b[1],e=b[2],b=b[3];try{0==a.a?"function"==typeof c?e(c.call(void 0,a.b)):e(a.b):1==a.a&&("function"==typeof d?e(d.call(void 0,a.b)):b(a.b))}catch(h){b(h)}}})}n.prototype.g=function(a){return this.c(void 0,a)};n.prototype.c=function(a,b){var c=this;return new n(function(d,e){c.f.push([a,b,d,e]);v(c)})};
+function w(a){return new n(function(b,c){function d(c){return function(d){h[c]=d;e+=1;e==a.length&&b(h)}}var e=0,h=[];0==a.length&&b(h);for(var k=0;k<a.length;k+=1)u(a[k]).c(d(k),c)})}function x(a){return new n(function(b,c){for(var d=0;d<a.length;d+=1)u(a[d]).c(b,c)})};window.Promise||(window.Promise=n,window.Promise.resolve=u,window.Promise.reject=t,window.Promise.race=x,window.Promise.all=w,window.Promise.prototype.then=n.prototype.c,window.Promise.prototype["catch"]=n.prototype.g);}());
+(function(){'use strict';var h=!!document.addEventListener;function k(a,b){h?a.addEventListener("scroll",b,!1):a.attachEvent("scroll",b)}function w(a){document.body?a():h?document.addEventListener("DOMContentLoaded",a):document.onreadystatechange=function(){"interactive"==document.readyState&&a()}};function x(a){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(a));this.b=document.createElement("span");this.c=document.createElement("span");this.h=document.createElement("span");this.f=document.createElement("span");this.g=-1;this.b.style.cssText="display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.c.style.cssText="display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";
+this.f.style.cssText="display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;";this.b.appendChild(this.h);this.c.appendChild(this.f);this.a.appendChild(this.b);this.a.appendChild(this.c)}
+function y(a,b){a.a.style.cssText="min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;left:-999px;white-space:nowrap;font:"+b+";"}function z(a){var b=a.a.offsetWidth,c=b+100;a.f.style.width=c+"px";a.c.scrollLeft=c;a.b.scrollLeft=a.b.scrollWidth+100;return a.g!==b?(a.g=b,!0):!1}function A(a,b){function c(){var a=l;z(a)&&null!==a.a.parentNode&&b(a.g)}var l=a;k(a.b,c);k(a.c,c);z(a)};function B(a,b){var c=b||{};this.family=a;this.style=c.style||"normal";this.weight=c.weight||"normal";this.stretch=c.stretch||"normal"}var C=null,D=null,H=!!window.FontFace;function I(){if(null===D){var a=document.createElement("div");try{a.style.font="condensed 100px sans-serif"}catch(b){}D=""!==a.style.font}return D}function J(a,b){return[a.style,a.weight,I()?a.stretch:"","100px",b].join(" ")}
+B.prototype.a=function(a,b){var c=this,l=a||"BESbswy",E=b||3E3,F=(new Date).getTime();return new Promise(function(a,b){if(H){var q=function(){(new Date).getTime()-F>=E?b(c):document.fonts.load(J(c,c.family),l).then(function(b){1<=b.length?a(c):setTimeout(q,25)},function(){b(c)})};q()}else w(function(){function r(){var b;if(b=-1!=e&&-1!=f||-1!=e&&-1!=g||-1!=f&&-1!=g)(b=e!=f&&e!=g&&f!=g)||(null===C&&(b=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent),C=!!b&&(536>parseInt(b[1],
+10)||536===parseInt(b[1],10)&&11>=parseInt(b[2],10))),b=C&&(e==t&&f==t&&g==t||e==u&&f==u&&g==u||e==v&&f==v&&g==v)),b=!b;b&&(null!==d.parentNode&&d.parentNode.removeChild(d),clearTimeout(G),a(c))}function q(){if((new Date).getTime()-F>=E)null!==d.parentNode&&d.parentNode.removeChild(d),b(c);else{var a=document.hidden;if(!0===a||void 0===a)e=m.a.offsetWidth,f=n.a.offsetWidth,g=p.a.offsetWidth,r();G=setTimeout(q,50)}}var m=new x(l),n=new x(l),p=new x(l),e=-1,f=-1,g=-1,t=-1,u=-1,v=-1,d=document.createElement("div"),
+G=0;d.dir="ltr";y(m,J(c,"sans-serif"));y(n,J(c,"serif"));y(p,J(c,"monospace"));d.appendChild(m.a);d.appendChild(n.a);d.appendChild(p.a);document.body.appendChild(d);t=m.a.offsetWidth;u=n.a.offsetWidth;v=p.a.offsetWidth;q();A(m,function(a){e=a;r()});y(m,J(c,'"'+c.family+'",sans-serif'));A(n,function(a){f=a;r()});y(n,J(c,'"'+c.family+'",serif'));A(p,function(a){g=a;r()});y(p,J(c,'"'+c.family+'",monospace'))})})};window.FontFaceObserver=B;window.FontFaceObserver.prototype.check=B.prototype.a;"undefined"!==typeof module&&(module.exports=window.FontFaceObserver);}());
+
+var observer = new FontFaceObserver('Jeju Gothic');
+
+observer.check()
+    .then( function(){
+        document.documentElement.className += " fonts-loaded";
+});
+</script>
+<link rel="stylesheet" href="static/css/blog.css" media="none" onload="if(media!='all')media='all'">
+<link rel="stylesheet" href="static/css/aboutpage.css" media="none" onload="if(media!='all')media='all'">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous" media="none" onload="if(media!='all')media='all'">
+<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" media="none" onload="if(media!='all')media='all'">
 </head>
 <body>
 <div class="blog-masthead">
@@ -22,26 +40,169 @@
 <div class="about-box">
 <div class="container">
 <h1>딘위</h1>
-<p>자바 프로그래머</p>
+<h5>자바 프로그래머</h5>
 </div>
 </div>
 <div class="about-box2">
 <div class="container">
-<h2>자기소개</h2>
+<h2>자기 소개</h2>
+<div class="row">
+<div class="col-sm-3">
+<img class="img-circle type1" src="http://www.makeathumbnail.com/thumbnails/image453572.jpg">
+</div>
+<div class="col-sm-8">
+<h3>안녕하세요.</h3>
+<p>딘위는 제 닉네임이며, 본명은 민경재입니다.
+정말로 프로그래밍을 즐깁니다. 프로그래밍을 통해서 더 나은 미래를 만들 수 있다는 것을 믿고, 그러한 미래를 꿈꿉니다.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="about-box3">
+<div class="container">
+<h2>타임 라인</h2>
+<div class="row">
+<div class="col-sm-3">
+<div class="timeline">
+<h4>2007-2014<h4>
+</div>
+<img class="img-circle type1" src="http://www.makeathumbnail.com/thumbnails/image453576.jpg">
+</div>
+<div class="col-sm-8">
+<h3>서울시립대학교 경제학과 졸업</h3>
+<p>프로그래밍과 전혀 상관없는 과목을 전공했습니다. 그렇지만 항상 프로그래밍에 관심이 있었습니다.</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-3 float-right">
+<div class="timeline">
+<h4>2014.03-2015.06<h4>
+</div>
+<img class="img-circle type1" src="http://svgporn.com/logos/unity.svg">
+</div>
+<div class="col-sm-8">
+<h3>약 1년 동안 C#과 유니티 공부</h3>
+<p>구체적으로 1인 인디 게임 제작자를 목표로 하여 유니티를
+ 공부했습니다. 2014년 유나이트 코리아에 대학생 신분으로 참가, 등등. 결과적으로 완성된 게임을 출시하지는 못했습니다.
+ 그렇지만, 프로그래밍 실력적으로 성장하였습니다.</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-3">
+<div class="timeline">
+<h4>2015.06-2015.09<h4>
+</div>
+<img class="img-circle type1" src="http://svgporn.com/logos/modx.svg">
+</div>
+<div class="col-sm-8">
+<h3>코트라 일본 IT 인턴십 참가</h3>
+<p>독학으로 프로그래밍을 공부하는 데는 한계가 있다고 느꼈습니다. 그래서 코트라 IT 인턴 프로젝트 참가했습니다.
+3개월간 자바 언어와 톰캣, JSP기반으로 웹 서버 프로그래밍 공부했습니다.</p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-3 float-right">
+<div class="timeline">
+<h4>2015.10-2016.01<h4>
+</div>
+<img class="img-circle type1" src="http://svgporn.com/logos/apphub.svg">
+</div>
+<div class="col-sm-8">
+<h3>일본 현지 회사에서 근무</h3>
+<p>4개월 동안 AIS라는 SI업체에서 근무했습니다.
+톰캣과 JSP를 사용하여 출퇴근 시스템을 만드는 것부터 시작하여, 리눅스 파일 시스템 
+Vert.x, Gradle, Bootstrap, Git, SVN, WordPress까지 다양한 프레임워크를 배우면서
+실력을 쌓아나갔습니다.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="about-box2">
+<div class="container">
+<h2>포트폴리오</h2>
+<div class="row">
+<div class="col-sm-3">
+<img class="img-circle type1" src="http://svgporn.com/logos/grav.svg">
+</div>
+<div class="col-sm-8">
+<h3>당신이 지금 보고 있는 이 블로그</h3>
+<p>지금 이 블로그는 도메인 등록에서부터 실제 운용까지 혼자서 다 했습니다.
+백엔드는 Openshift 서버와 Vert.x, mySQL을 사용했으며,
+프론트엔드는 Bootstrap, Javascript, jQuery 등의 프레임 워크를 사용했습니다.
+성능과 디자인 모두 고려했습니다.</p>
+</div>
+</div>
+<div class="portfolio">
+<div class="col-md-4">
+백엔드
+</div>
+<div class="col-md-4">
+프론트엔드
+</div>
+<div class="col-md-4">
+</div>
+
+</div>
+<div class="row">
+<div class="col-sm-3">
+<img class="img-circle type1" src="http://svgporn.com/logos/apptentive.svg">
+</div>
+<div class="col-sm-8">
+<p>유니티 게임 개발 경험</p>
+</div>
+</div>
+</div>
+</div>
+<div class="about-box2">
+<div class="container">
+<h2>스킬 셋</h2>
+<h4>저는 다음과 같은 스킬들을 사용할 줄 압니다.</h4>
+<div>
+<ul class="list-group nav navbar-nav">
+<li class="list-group-item"><a href="#">About</a></li>
+<li class="list-group-item"><a href="#">About</a></li>
+<li class="list-group-item"><a href="#">About</a></li>
+<li class="list-group-item"><a href="#">About</a></li>
+</ul>
+</div>
+<div>
+<ul class="logos">
+<li><img class="img-circle type1" src="http://svgporn.com/logos/java.svg"></li>
+<li><img class="img-circle type2" src="http://svgporn.com/logos/javascript.svg"></li>
+<li><img class="img-circle type3" src="http://svgporn.com/logos/jquery.svg"></li>
+<li><img class="img-circle type4" src="http://svgporn.com/logos/gradle.svg"></li>
+<li><img class="img-circle type4" src="http://svgporn.com/logos/mysql.svg"></li>
+</ul>
+</div>
+<p>자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머</p>
+</div>
+</div>
+<div class="about-box2">
+<div class="container">
+<h2>기타 어필 사항</h2>
 <div class="row">
 <div class="col-sm-3">
 <img class="img-circle type1" src="http://svgporn.com/logos/java.svg">
 </div>
-<div class="col-sm-9">
-<p>자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머자바 프로그래머</p>
+<div class="col-sm-8">
+<h3>어학 능력</h3>
+<p>어학 능력, 일본어 5/5 영어 3/5 수준<br>
+프로그래밍을 배우는데 있어서 특히 영어 능력은 중요하다고 생각합니다.
+매일 스택오버플로우에서 질문을 읽고, 필요에 따라 물어본 데서 우러나온 경험입니다.
+프로그래밍을 하면서 일본어의 활용도는 크게 중요하지 않다고 생각합니다. 그러나,
+프로그래밍도 하나의 언어라고 보았을 때, 일본어라는 하나의 언어를 어느 정도의 수준에 이르기까지
+배웠다는 점에서 미루어 보았을 때 가늠할 수 있는 언어 습득 능력과, 그 끈기를 보여줄 수 있다고 생각합니다. </p>
 </div>
 </div>
+<div class="row">
+<div class="col-sm-3">
+<img class="img-circle type1" src="http://svgporn.com/logos/java.svg">
+</div>
+<div class="col-sm-8">
+<h3>해외 거주 경험</h3>
+<p></p>
 </div>
 </div>
-<div class="jumbotron">
-<div class="container">
-<h1>타임 라인</h1>
-<p>자바 프로그래머</p>
 </div>
 </div>
 <div class="jumbotron">
@@ -49,16 +210,6 @@
 <h1>포트폴리오</h1>
 <p>자바 프로그래머</p>
 </div>
-</div>
-<div class="about-box">
-<h1>스킬 셋</h1>
-<ul class="logos">
-<li><img class="img-circle type1" src="http://svgporn.com/logos/java.svg"></li>
-<li><img class="img-circle type2" src="http://svgporn.com/logos/javascript.svg"></li>
-<li><img class="img-circle type3" src="http://svgporn.com/logos/jquery.svg"></li>
-<li><img class="img-circle type4" src="http://svgporn.com/logos/gradle.svg"></li>
-</ul>
-<h1>언어 능력</h1>
 </div>
 <div class="about-intro">
 </div>
@@ -71,7 +222,8 @@
 <script>
 //window.scrollTo(0,document.body.scrollHeight);
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+<script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script async src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>

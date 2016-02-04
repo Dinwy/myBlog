@@ -46,7 +46,11 @@ public class WebVerticle extends AbstractVerticle {
 	 
 	    router.route("/about").handler(routingContext -> {
 			HttpServerResponse response = routingContext.response();
-			response.sendFile("../app-root/repo/webroot/view/about.html");
+			response.setChunked(true);
+			if(!response.headWritten())
+			response.putHeader("content-type", "text/html")
+					.setStatusCode(200)
+					.sendFile("../app-root/repo/webroot/view/about.html");
 		});
 	    
 //	    redirectAuthHandler Setting
@@ -54,11 +58,15 @@ public class WebVerticle extends AbstractVerticle {
 	    router.route("/signin").handler(routingContext -> {
 			HttpServerResponse response = routingContext.response();
 			response.putHeader("content-type", "text/html")
+					.setStatusCode(200)
 					.sendFile("../app-root/repo/webroot/view/signin.html");
 		});
 	    
 	    //redirect every connection to admin/*
 	    router.route("/admin/*").handler(redirectAuthHandler);
+	    router.route("/webroot/*").handler(routingContext ->{
+	    	routingContext.response().putHeader("location", "/").setStatusCode(301).end();
+	    });
 	    
 	    router.route("/admin/dashboard").handler(routingContext -> {
 	    	System.out.println("admin/dashboard");
@@ -74,9 +82,9 @@ public class WebVerticle extends AbstractVerticle {
 					.sendFile("../app-root/repo/webroot/admin/posts.html");
 		});
 	    
-	    router.route("/").handler(StaticHandler.create("../app-root/repo/webroot").setCachingEnabled(true));
-		router.route("/view/*").handler(StaticHandler.create().setWebRoot("../app-root/repo/webroot/view").setCachingEnabled(true));
-		router.route("/static/*").handler(StaticHandler.create("../app-root/repo/webroot/static").setCachingEnabled(true));
+	    router.route().handler(StaticHandler.create("../app-root/repo/webroot"));
+		router.route("/view/*").handler(StaticHandler.create().setWebRoot("../app-root/repo/webroot/view"));
+		router.route("/static/*").handler(StaticHandler.create("../app-root/repo/webroot/static").setMaxAgeSeconds(3568000));
 	    router.post("/api/signin").handler(routingContext -> {
 			HttpServerRequest request = routingContext.request();
 			JsonObject userInfo = new JsonObject();
