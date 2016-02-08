@@ -1,7 +1,9 @@
 body{
 color: #555;
 word-wrap: break-word;
+font-size: 16px !important;
 }
+
 .fonts-loaded body{
 font-family: "Jeju Gothic",Geneva,sans-serif !important; 
 }

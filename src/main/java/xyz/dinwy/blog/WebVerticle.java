@@ -17,6 +17,7 @@ import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.AuthHandler;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.CookieHandler;
+import io.vertx.ext.web.handler.FaviconHandler;
 import io.vertx.ext.web.handler.RedirectAuthHandler;
 import io.vertx.ext.web.handler.SessionHandler;
 import io.vertx.ext.web.handler.StaticHandler;
@@ -82,9 +83,10 @@ public class WebVerticle extends AbstractVerticle {
 					.sendFile("../app-root/repo/webroot/admin/posts.html");
 		});
 	    
-	    router.route().handler(StaticHandler.create("../app-root/repo/webroot"));
+		router.route().handler(FaviconHandler.create("../app-root/repo/webroot/favicon.ico", 3868000));
+	    router.route().handler(StaticHandler.create("../app-root/repo/webroot").setMaxAgeSeconds(3868000));
 		router.route("/view/*").handler(StaticHandler.create().setWebRoot("../app-root/repo/webroot/view"));
-		router.route("/static/*").handler(StaticHandler.create("../app-root/repo/webroot/static").setMaxAgeSeconds(3568000));
+		router.route("/static/*").handler(StaticHandler.create("../app-root/repo/webroot/static").setMaxAgeSeconds(3868000));
 	    router.post("/api/signin").handler(routingContext -> {
 			HttpServerRequest request = routingContext.request();
 			JsonObject userInfo = new JsonObject();

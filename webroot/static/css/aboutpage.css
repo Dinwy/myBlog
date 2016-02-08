@@ -1,11 +1,35 @@
+hr{
+border:1px dotted black;
+}
+
+.img-etc{
+border:1px solid #ddd;
+border-radius:5%;
+}
+
+img, video, audio, iframe, object {
+max-width: 100%;
+}
+
+img {
+border: 0px none;
+}
+
+.size1{
+width:484px;	
+}
+
 .portfolio{
 background-color: white;
 -webkit-transition:all 2.4s ease 0s;
 transition: all 2.4s ease 0s;	
 }
 
+.favicon{
+	height:30px;
+}
 p{
-text-align:initial;
+text-align:justify;
 margin: 10px !important;
 padding:5px;
 }
@@ -25,32 +49,53 @@ float:initial !important;
 }
 }
 
+.img-rectangle {
+border-radius: 5%;
+min-width: 100px;
+max-width: 250px;
+height: 100px;
+-webkit-transition:all 1.4s ease 0s;
+transition: all 1.4s ease 0s;
+padding: 10px 0px 10px 0px;
+border: 10px solid #ccc;
+box-shadow: 5px 5px 5px #555;
+margin: 10px;
+background-color: white;
+}
+
 .img-circle {
 border-radius: 50%;
 width: 150px;
 height: 150px;
 -webkit-transition:all 2.4s ease 0s;
 transition: all 2.4s ease 0s;
-padding:10px;
+padding:10px	;
 border: 10px solid #ccc;
 box-shadow: 5px 5px 5px #555;
 margin: 10px 0px 10px 0px;
 background-color: white;
 }
+.nopadding{
+padding: 0px !important;
+}
 
-.type1 {
+.lv3 {
+border-color: #5CB85C;
 }
-.type2 {
-padding:0px !important;
+
+.lv2 {
+border-color: #31B0D5;
 }
-.type3 {
-background: #6DFF80;
+.lv1 {
+border-color: #EC971F;
 }
 
 .logos {
+display: -webkit-flex;
+display: -ms-flex;
 display: flex;
 flex-wrap: wrap;
-justify-content: flex-start;
+justify-content: space-around;
 list-style: outside none none;
 margin: 0px 0px 3rem;
 padding: 0px;
@@ -93,7 +138,15 @@ text-align: center;
 
 .about-box3{
 background-color: #39B;
-color: antiquewhite;
+color: #FFF;
+min-height: 200px;
+padding: 15px;
+text-align: center;
+}
+
+.about-box4{
+background-color: #AC8;
+color:black;
 min-height: 200px;
 padding: 15px;
 text-align: center;
@@ -103,11 +156,20 @@ text-align: center;
 font-size: 80px;
 text-shadow: 4px 3px 0px #ee3b16, 9px 8px 0px rgba(0, 0, 0, 0.15);
 }
+
 .container > h2{
 font-size: 50px;
 text-shadow: 2px 1px 0px #EEE, 5px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
+.about-box3 > .container > h2{
+font-size: 50px;
+text-shadow: 2px 1px 0px #39B, 5px 4px 0px rgba(0, 0, 0, 0.15);
+}
+.about-box4 > .container > h2{
+font-size: 50px;
+text-shadow: 2px 1px 0px #AC8, 5px 4px 0px rgba(0, 0, 0, 0.15);
+}
 .sidebar {
     position: fixed;
     top: 51px;

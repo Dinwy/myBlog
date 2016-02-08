@@ -17,6 +17,7 @@ import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.AuthHandler;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.CookieHandler;
+import io.vertx.ext.web.handler.FaviconHandler;
 import io.vertx.ext.web.handler.RedirectAuthHandler;
 import io.vertx.ext.web.handler.SessionHandler;
 import io.vertx.ext.web.handler.StaticHandler;
@@ -30,7 +31,7 @@ public class WebVerticle extends AbstractVerticle {
 		HttpServer server = vertx.createHttpServer();
 		Router router = Router.router(vertx);
 		JDBCClient client = JDBCVerticle.getJDBCinfo(vertx);
-
+		
 		router.route().handler(CookieHandler.create());
 	    router.route().handler(BodyHandler.create());
 	    router.route().handler(SessionHandler
@@ -82,9 +83,10 @@ public class WebVerticle extends AbstractVerticle {
 					.sendFile("webroot/admin/posts.html");
 		});
 	    
-		router.route().handler(StaticHandler.create("webroot").setCachingEnabled(true));
+		router.route().handler(FaviconHandler.create("webroot/favicon.ico", 3868000));
+		router.route().handler(StaticHandler.create("webroot").setMaxAgeSeconds(3868000));
 		router.route("/view/*").handler(StaticHandler.create().setWebRoot("webroot/view").setCachingEnabled(true));
-		router.route("/static/*").handler(StaticHandler.create("webroot/static").setMaxAgeSeconds(3568000));
+		router.route("/static/*").handler(StaticHandler.create("webroot/static").setMaxAgeSeconds(3868000));
 	    router.post("/api/signin").handler(routingContext -> {
 			HttpServerRequest request = routingContext.request();
 			JsonObject userInfo = new JsonObject();
