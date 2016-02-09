@@ -3,6 +3,7 @@ package xyz.dinwy.blog.local;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.http.HttpServer;
+import io.vertx.core.http.HttpServerOptions;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.core.json.Json;
@@ -28,7 +29,9 @@ public class WebVerticle extends AbstractVerticle {
 	@Override
 	public void start(Future<Void> fut) throws Exception{
 		
-		HttpServer server = vertx.createHttpServer();
+		HttpServerOptions serverOptions = new HttpServerOptions();
+		serverOptions.setCompressionSupported(true);
+		HttpServer server = vertx.createHttpServer(serverOptions);
 		Router router = Router.router(vertx);
 		JDBCClient client = JDBCVerticle.getJDBCinfo(vertx);
 		

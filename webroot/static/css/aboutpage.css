@@ -1,10 +1,40 @@
 hr{
 border:1px dotted black;
 }
+.row{
+margin-top:15px;
+}
+.img-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
+    text-align:center; /* Align center inline elements */
+}
+
+.card-contents{
+	
+}
+.round-border{
+border-radius: 5px;
+}
+
+.bg-img{
+background-image: url("//i.imgur.com/6y5Be9F.jpg");
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+}
 .img-etc{
-border:1px solid #ddd;
-border-radius:5%;
+max-height:400px;
+box-shadow: 2px 1px 0px rgb(67, 160, 71), 5px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.img-etc2{
+max-height:400px;
+padding:10px;
 }
 
 img, video, audio, iframe, object {
@@ -24,56 +54,47 @@ background-color: white;
 -webkit-transition:all 2.4s ease 0s;
 transition: all 2.4s ease 0s;	
 }
-
 .favicon{
-	height:30px;
+height:300px;
 }
 p{
-text-align:justify;
+text-align:initial;
 margin: 10px !important;
 padding:5px;
 }
 
-.timeline{
-background-color: #3ae;
-color: white;
-}
-
 .float-right{
-float:right !important;
+float:inherit !important;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 992px) {
 .float-right {
-float:initial !important;
+float:right !important;
 }
 }
 
 .img-rectangle {
 border-radius: 5%;
 min-width: 100px;
-max-width: 250px;
+max-width: 200px;
 height: 100px;
 -webkit-transition:all 1.4s ease 0s;
 transition: all 1.4s ease 0s;
 padding: 10px 0px 10px 0px;
 border: 10px solid #ccc;
-box-shadow: 5px 5px 5px #555;
-margin: 10px;
+box-shadow: 2px 1px 0px #009688, 5px 4px 0px rgba(0, 0, 0, 0.15);margin: 10px;
 background-color: white;
 }
 
-.img-circle {
-border-radius: 50%;
-width: 150px;
-height: 150px;
+.img-rectangle2 {
+max-width: 100%;
+height: 200px;
 -webkit-transition:all 2.4s ease 0s;
 transition: all 2.4s ease 0s;
-padding:10px	;
-border: 10px solid #ccc;
-box-shadow: 5px 5px 5px #555;
-margin: 10px 0px 10px 0px;
+box-shadow: 2px 1px 0px #0277BD, 5px 4px 0px rgba(0, 0, 0, 0.15);
 background-color: white;
+margin-top:20px;
+margin-bottom:10px;
 }
 .nopadding{
 padding: 0px !important;
@@ -97,20 +118,18 @@ display: flex;
 flex-wrap: wrap;
 justify-content: space-around;
 list-style: outside none none;
-margin: 0px 0px 3rem;
 padding: 0px;
 }
 
 .text-card{
-    color: black;
-    text-shadow: 2px 2px 5px white;
+color: black;
+text-shadow: 2px 2px 5px white;
 background-color:rgba(255,250,230,0.7);
-    border: 1px solid #a1a1a1;
-    padding: 10px 40px; 
+border: 1px solid #a1a1a1;
+padding: 10px 40px; 
 }
-
 .about-intro{
-background-image: url("//i.imgur.com/vqGKOJO.jpg");
+background-image: url("//i.imgur.com/6y5Be9F.jpg");
 background-position: 50% 50%;
 background-repeat: no-repeat;
 background-attachment: fixed;
@@ -119,67 +138,133 @@ height:300px;
 padding:30px;
 text-align: center;
 }
+.dxy-card{
 
-.about-box{
-min-height:200px;
+}
+.about-box1{
 padding:30px;
 text-align: center;
-background-color: rgb(238, 59, 22);
+background-color: #7b1fa2;
 color: white;
+margin:10px;
 }
-
 .about-box2{
-background-color: #EEE;
-color: black;
-min-height:200px;
-padding:15px;
+background-color: #3f51b5;
+color: white;
 text-align: center;
+margin:10px;
+padding: 0px 15px 15px 15px;
+}
+.about-box2 > .row > h2{
+padding:10px;
+background-color:#303f9f;
+font-size: 44px;
+text-shadow: 2px 1px 0px #303f9f, 5px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
 .about-box3{
-background-color: #39B;
+background-color: #039be5;
 color: #FFF;
 min-height: 200px;
-padding: 15px;
 text-align: center;
+margin:10px;
+padding: 0px 15px 15px;
+}
+.about-box3 > .row > h2{
+padding:10px;
+background-color:#0277bd;
+font-size: 44px;
+text-shadow: 2px 1px 0px #0277bd, 5px 4px 0px rgba(0, 0, 0, 0.15);
+}
+.about-box3 > .row > h3{
+padding:5px;
+background-color: #0288d1;
+text-shadow: 2px 1px 0px #0288d1, 3px 2px 0px rgba(0, 0, 0, 0.15);
 }
 
 .about-box4{
-background-color: #AC8;
-color:black;
+background-color: #009688;
+color:#FFF;
 min-height: 200px;
-padding: 15px;
 text-align: center;
+margin:10px;
+padding: 0px 15px 15px;
 }
 
-.container > h1{
-font-size: 80px;
-text-shadow: 4px 3px 0px #ee3b16, 9px 8px 0px rgba(0, 0, 0, 0.15);
+.about-box4 > .row > h2{
+padding:10px;
+background-color: #00796b;
+font-size: 44px;
+text-shadow: 2px 1px 0px #00796b, 5px 4px 0px rgba(0, 0, 0, 0.15);
+}
+.about-box4 > .row > h3{
+padding:5px;
+background-color: #00897b;
+text-shadow: 2px 1px 0px #00897b, 3px 2px 0px rgba(0, 0, 0, 0.15);
 }
 
-.container > h2{
-font-size: 50px;
-text-shadow: 2px 1px 0px #EEE, 5px 4px 0px rgba(0, 0, 0, 0.15);
+.about-box5{
+background-color: #43a047;
+color:#FFF;
+min-height: 200px;
+text-align: center;
+margin:10px;
+padding: 0px 15px 15px;
 }
 
-.about-box3 > .container > h2{
-font-size: 50px;
-text-shadow: 2px 1px 0px #39B, 5px 4px 0px rgba(0, 0, 0, 0.15);
+.about-box5 > .row > h2{
+padding:10px;
+background-color: #2e7d32;
+font-size: 44px;
+text-shadow: 2px 1px 0px #2e7d32, 5px 4px 0px rgba(0, 0, 0, 0.15);
 }
-.about-box4 > .container > h2{
-font-size: 50px;
-text-shadow: 2px 1px 0px #AC8, 5px 4px 0px rgba(0, 0, 0, 0.15);
+.about-box5 > .row > h3{
+padding:5px;
+background-color: #388e3c;
+text-shadow: 2px 1px 0px #388e3c, 3px 2px 0px rgba(0, 0, 0, 0.15);
 }
-.sidebar {
-    position: fixed;
-    top: 51px;
-    bottom: 0px;
-    right: 1%;
-    z-index: 1000;
-    display: block;
+.about-box6{
+background-color: #cddc39;
+color:#000;
+min-height: 200px;
+text-align: center;
+margin:10px;
+padding: 0px 15px 15px;
+}
+.about-box6 > .row > h2{
+padding:10px;
+background-color: #afb42b;
+font-size: 44px;
+text-shadow: 2px 1px 0px #afb42b, 5px 4px 0px rgba(0, 0, 0, 0.15);
+}
+.about-box6 > .row > h3{
+padding:5px;
+background-color: #c0ca33;
+text-shadow: 2px 1px 0px #c0ca33, 3px 2px 0px rgba(0, 0, 0, 0.15);
+}
+
+.bs-callout {
     padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: #F5F5F5;
-    border-right: 1px solid #EEE;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+	border-right-width: 5px;
+    border-radius: 3px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-portfolio{
+background-color:#388E3C;
+color:#FFF;	
 }

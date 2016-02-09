@@ -21,78 +21,36 @@ observer.check()
     .then( function(){
         document.documentElement.className += " fonts-loaded";
 });
-</script>
-<link rel="stylesheet" href="static/css/blog.css" media="none" onload="if(media!='all')media='all'">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous" media="none" onload="if(media!='all')media='all'">
-<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" media="none" onload="if(media!='all')media='all'">
-</head>
-<body>
-<div class="blog-masthead">
-<div class="container">
-<nav class="blog-nav">
-<a class="blog-nav-item active" href="#">홈</a>
-<a class="blog-nav-item" href="#">개발 일지</a>
-<a class="blog-nav-item" href="/about">프로필</a>
-</nav>
-</div>
-</div>
-<div class="container">
-<div class="blog-header">
-<h1 class="blog-title">Dinwy's Blog</h1>
-<p class="lead blog-description">Openshift,Vert.x,mySQL,Bootstrap,Javascript,XHR의 도움을 받아 만드는 중인 블로그</p>
-</div>
 
-<div class="row">
-<div class="col-sm-8 blog-main">
-<div id="blog-post" class="blog-post">
-<h2 class="blog-post-title">홈페이지 공사 중입니다.</h2>
-<p class="blog-post-meta">February 1, 2016 by <a href="/about">Dinwy</a></p>
-<p>XHR을 이용해서 mySQL에서 포스트를 받아올 자리입니다.</p>
-</div><!--/.blog-post -->
-<nav>
-<ul class="pager">
-<li><a href="#">Previous</a></li>
-<li><a href="#">Next</a></li>
+!function(e){"use strict";var n=function(n,t,i){function o(e){return r.body?e():void setTimeout(function(){o(e)})}var d,r=e.document,a=r.createElement("link"),l=i||"all";if(t)d=t;else{var f=(r.body||r.getElementsByTagName("head")[0]).childNodes;d=f[f.length-1]}var s=r.styleSheets;a.rel="stylesheet",a.href=n,a.media="only x",o(function(){d.parentNode.insertBefore(a,t?d:d.nextSibling)});var u=function(e){for(var n=a.href,t=s.length;t--;)if(s[t].href===n)return e();setTimeout(function(){u(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=l}),a.onloadcssdefined=u,u(function(){a.media!==l&&(a.media=l)}),a};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
+loadCSS("static/css/blog.css");
+loadCSS("static/css/aboutpage.css");
+loadCSS("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css");
+loadCSS("http://fonts.googleapis.com/earlyaccess/jejugothic.css");
+loadCSS("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+</script>
+</head>
+<body class="bg-img">
+<div class="menu-bar">
+<button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
+<ul class="dropdown-menu">
+<li><a class="blog-nav-item" href="/">홈</a></li>
+<li><a class="blog-nav-item" href="#">개발 일지</a></li>
+<li><a class="blog-nav-item active" href="/about">프로필</a></li>
 </ul>
-</nav>
-</div><!-- /.blog-main -->
-<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-<div class="sidebar-module sidebar-module-inset">
-<h4>About</h4>
-<p>Hey, I'm Dinwy. I'm beginner Java Programmer. I made this blog for share what I've learned. thx.</p>
-<h4>Elsewhere</h4>
-<ol class="list-unstyled">
-<li><a href="#">GitHub</a></li>
-<li><a href="#">Twitter</a></li>
-<li><a href="#">Facebook</a></li>
-</ol>
 </div>
-<div class="sidebar-module">
-<h4>Archives</h4>
-<ol class="list-unstyled">
-<li><a href="#">March 2014</a></li>
-<li><a href="#">February 2014</a></li>
-<li><a href="#">January 2014</a></li>
-<li><a href="#">December 2013</a></li>
-<li><a href="#">November 2013</a></li>
-<li><a href="#">October 2013</a></li>
-<li><a href="#">September 2013</a></li>
-<li><a href="#">August 2013</a></li>
-<li><a href="#">July 2013</a></li>
-<li><a href="#">June 2013</a></li>
-<li><a href="#">May 2013</a></li>
-<li><a href="#">April 2013</a></li>
-</ol>
+<div class="container">
+<div class="about-box1 round-border">
+<img class="favicon" src="static/imgs/dinwy-logo.svg">
+<h3>블로그 공사 중입니다.</h3>
 </div>
-</div><!-- /.blog-sidebar -->
-</div><!-- /.row -->
-</div><!-- /.container -->
 <footer class="blog-footer">
-<p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+<p>2016, Dinwy. All Rights Reserved.</p>
 <p>
 <a href="#">Back to top</a>
 </p>
 </footer>
+</div>
 <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
 <script async src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script><script>
