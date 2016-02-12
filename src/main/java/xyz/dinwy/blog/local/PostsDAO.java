@@ -48,7 +48,7 @@ public class PostsDAO{
 		client.getConnection(res -> {
 		if(res.succeeded()) {
 			SQLConnection connection = res.result();
-		    String query = "SELECT * FROM test.bulletin_board order by no desc limit " + (Long.parseLong(pageNum)*5-5) + ",5;";
+		    String query = "SELECT * FROM blog.posts order by id desc limit " + (Long.parseLong(pageNum)*5-5) + ",5;";
 		    connection.query(query, res2-> {
 			    if(res2.failed()) {
 			    	 sendError(500, routingContext.response());

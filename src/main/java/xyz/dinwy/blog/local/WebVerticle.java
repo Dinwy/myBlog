@@ -87,7 +87,7 @@ public class WebVerticle extends AbstractVerticle {
 		});
 	    
 		router.route().handler(FaviconHandler.create("webroot/favicon.ico", 3868000));
-		router.route().handler(StaticHandler.create("webroot").setMaxAgeSeconds(3868000));
+		router.route("/").handler(StaticHandler.create("webroot").setMaxAgeSeconds(3868000));
 		router.route("/view/*").handler(StaticHandler.create().setWebRoot("webroot/view").setCachingEnabled(true));
 		router.route("/static/*").handler(StaticHandler.create("webroot/static").setMaxAgeSeconds(3868000));
 	    router.post("/api/signin").handler(routingContext -> {
@@ -148,14 +148,15 @@ public class WebVerticle extends AbstractVerticle {
 	}
 	
 	private void getPosts(RoutingContext routingContext) {
+		System.out.println("GET POSTS");
 		String pageNum = routingContext.request().getParam("page");
 		if(pageNum == null){
-			pageNum = "1";	
+			pageNum = "1";
 		};
 		System.out.println("getPosts called!");
 		JDBCClient client = JDBCVerticle.getJDBCinfo(vertx);
-		PostsDAO MBDAO = new PostsDAO();
-		MBDAO.getPosts(vertx, client, routingContext, pageNum);
+		PostsDAO PostsDAO = new PostsDAO();
+		PostsDAO.getPosts(vertx, client, routingContext, pageNum);
 	}
 
 	private void redirectMessageBB(RoutingContext routingContext) {

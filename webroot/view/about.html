@@ -18,13 +18,12 @@ G=0;d.dir="ltr";y(m,J(c,"sans-serif"));y(n,J(c,"serif"));y(p,J(c,"monospace"));d
 var observer = new FontFaceObserver('Jeju Gothic');
 
 observer.check()
-    .then( function(){
-        document.documentElement.className += " fonts-loaded";
+.then( function(){
+document.documentElement.className += " fonts-loaded";
 });
 
 !function(e){"use strict";var n=function(n,t,i){function o(e){return r.body?e():void setTimeout(function(){o(e)})}var d,r=e.document,a=r.createElement("link"),l=i||"all";if(t)d=t;else{var f=(r.body||r.getElementsByTagName("head")[0]).childNodes;d=f[f.length-1]}var s=r.styleSheets;a.rel="stylesheet",a.href=n,a.media="only x",o(function(){d.parentNode.insertBefore(a,t?d:d.nextSibling)});var u=function(e){for(var n=a.href,t=s.length;t--;)if(s[t].href===n)return e();setTimeout(function(){u(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=l}),a.onloadcssdefined=u,u(function(){a.media!==l&&(a.media=l)}),a};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
 loadCSS("static/css/blog.css");
-loadCSS("static/css/aboutpage.css");
 loadCSS("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css");
 loadCSS("http://fonts.googleapis.com/earlyaccess/jejugothic.css");
 loadCSS("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
@@ -43,7 +42,7 @@ loadCSS("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min
 <div class="about-box1 round-border">
 <img class="favicon" src="static/imgs/dinwy-logo.svg">
 <h3>Perfection is Achieved Not When There Is Nothing More to Add, But When There Is Nothing Left to Take Away<br>
- Antoine de Saint-Exupery </h3>
+Antoine de Saint-Exupery </h3>
 </div>
 <div class="about-box2 round-border">
 <div class="row">
@@ -52,7 +51,8 @@ loadCSS("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min
 <img class="round-border" src="static/imgs/profile-img.jpg">
 </div>
 <div class="col-md-8">
-<p><br>나는 프론트 엔드 엔지니어 입니다.
+<p><br>딘위는 제 닉네임이며, 본명은 민경재입니다. 대한민국에서 태어났습니다.<br> 
+웹 프로그래머이며, 특화된 부분은 프론트 엔드 엔지니어링입니다.
 주로 Java와 JS, HTML5, CSS3를 사용하여 프로젝트를 진행했습니다.
 부차적으로 Paas와 Vert.x, Node.js로 백 엔드도 구축할 수 있습니다.<br>
 완벽함이란, 더 보탤 것이 남아 있지 않을 때가 아니라 더 이상 뺄 것이 없을 때 완성된다는 철학에 따라 디자인&프로그래밍 합니다.
@@ -69,8 +69,8 @@ loadCSS("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min
 </div>
 <div class="col-md-8">
 <h3>서울 시립 대학교<br>경제학과 졸업</h3>
-<p>늘 프로그래밍을 좋아했지만, 매력적인 학문인 경제학을 배우고 싶었습니다.
-경제학은 논리적 사고를 바탕으로, 경제 현상을 정확히 분석하고 이해하는 학문입니다.
+<p>늘 프로그래밍을 좋아했지만 매력적인 학문인 경제학을 배우고 싶었습니다.
+경제학은 논리적 사고를 바탕으로 경제 현상을 정확히 분석하고 이해하는 학문입니다.
 이러한 경제학에서 배운 논리적 사고와 분석에 따른 결과 도출은 프로그래밍 철학에 많은 영향을 주었습니다.<br>
 졸업 시점을 앞두고 프로그래머가 되기 위해서 본격적으로 공부를 시작했습니다.</p>
 </div>
@@ -83,8 +83,8 @@ loadCSS("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min
 <div class="col-md-8">
 <h3>유니티3D와 C# 공부</h3>
 <p>다양한 게임을 즐기는 한 명의 유저로서 자신만의 게임을 만들어보고 싶었습니다.
-따라서, 1인 인디 게임 제작자를 목표로 하여 유니티3D와 C#을 배우기 시작했습니다.<br>
-유나이트 서울 2014에 대학생 자격으로 참가하였으며, 윈도우에서 구동되는 간단한 게임의 프로토 타입을 만들었습니다.<br>
+그래서 1인 인디 게임 제작자를 목표로 하여 유니티3D와 C#을 배우기 시작했습니다.<br>
+유나이트 서울 2014에 대학생 자격으로 참가하였으며 윈도우에서 구동되는 간단한 게임의 프로토 타입을 만들었습니다.<br>
 </p>
 </div>
 </div>
@@ -96,10 +96,10 @@ loadCSS("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min
 <div class="col-md-8">
 <h3>코트라 일본 IT 인턴십 참가</h3>
 <p>보다 넓은 세상에서 실력을 키우고 싶었습니다.
-마침 코트라에서 일본 IT 기업과 연계하여, 인턴십 프로그램을 진행하고 있었습니다.
+마침 코트라에서 일본 IT 기업과 연계하여 인턴십 프로그램을 진행하고 있었습니다.
 2009년부터 꾸준히 공부해 온 일본어 능력과 1년간 배운 프로그래밍 능력을 잘 살릴 수 있는 좋은 기회라고
 생각하여 프로그램에 지원하여 합격했습니다.<br>
-현지에서 3개월 간 자바를 메인 언어로 하여, 톰캣과 JSP 기반으로 한 웹 서버 프로그래밍 교육을 받았습니다.
+현지에서 3개월 간 자바를 메인 언어로 하여 톰캣과 JSP 기반으로 한 웹 서버 프로그래밍 교육을 받았습니다.
 기존의 부족했던 부분은 키우고, 보유했던 능력은 잘 발휘하여 우수한 성적으로 인턴십을 수료했습니다.</p>
 </div>
 </div>
@@ -110,11 +110,11 @@ loadCSS("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min
 </div>
 <div class="col-md-8">
 <h3>일본 IT 업체에서 근무</h3>
-<p>코트라 일본 IT 인턴십 교육 수료 시기에 맞춰, 일본 IT 회사의 면접을 봤습니다.
-면접은 일본어 실력과 프로그래밍 실력을 바탕으로 합격하여, 교육을 수료하자마자 곧바로 근무를 시작했습니다.<br>
-근무 중에는 회사에서 맡긴 출·퇴근 시스템 및 사내 홈페이지 구축 및 CentOS에서 SVN&FTP 서버 구축 프로젝트를 성공적으로 수행했습니다.
-그리고 사내 홈페이지 구축 프로젝트에서 Openshift를 활용하여 서버를 구축한 점은 좋은 평가를 받았습니다. <br>
-이 시기에는 맡겨진 일 뿐만 아니라, Vert.x, Gradle, Git, WordPress 등의 다양한 프레임워크도 꾸준히 공부했습니다.</p>
+<p>코트라 일본 IT 인턴십 교육 수료 시기에 맞춰 일본 IT 회사의 면접을 봤습니다.
+면접은 일본어 실력과 프로그래밍 실력을 바탕으로 합격하여 교육을 수료하자마자 곧바로 근무를 시작했습니다.<br>
+근무 중에는 회사에서 맡긴 출·퇴근 시스템 및 사내 홈페이지 제작 및 CentOS에서 SVN&FTP 서버 구축 프로젝트를 성공적으로 수행했습니다.
+그리고 사내 홈페이지 제작 프로젝트에서 Openshift를 서버 활용한 점은 좋은 평가를 받았습니다. <br>
+이 시기에는 맡겨진 일 뿐만 아니라 Vert.x, Gradle, Git, WordPress 등의 다양한 프레임워크도 꾸준히 공부했습니다.</p>
 </div>
 </div>
 </div>
@@ -151,11 +151,11 @@ loadCSS("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min
 <div class="row">
 <h2>포트폴리오</h2>
 <h3>바로 이 블로그</h3>
-<p>이 블로그는 서버 구축에서부터 도메인 등록까지 혼자서 운영하고 있습니다.
-지금까지 배워온 내용, 앞으로 배울 내용들을 사람들과 공유할 목적으로 만들게 되었습니다.
+<p>이 블로그는 백 엔드에서부터 프론트 엔드까지 혼자서 만들어 나가고 있습니다.
+지금까지 배워 온 내용 및 앞으로 배울 내용들을 사람들과 공유할 목적으로 만들게 되었습니다.
 블로그를 만드는 데 사용된 소스 코드는 <a class="btn btn-default" href="https://github.com/Dinwy/myBlog"><i class="fa fa-github fa-lg"></i> 깃허브</a>에서 볼 수 있습니다.<br>
-구체적으로 백 엔드는 Openshift 서버에 Vert.x, mySQL로 구성되어 있으며,
-프론트 엔드는 HTML5와 CSS3를 기반으로 하여, Bootstrap, Javascript, jQuery 등의 프레임 워크로 이뤄져 있습니다.<br>
+구체적으로 백 엔드는 Openshift, Vert.x, mySQL로 구성되어 있으며
+프론트 엔드는 HTML5와 CSS3를 기반으로 하여 Bootstrap, jQuery 등의 프레임 워크로 이뤄져 있습니다.<br>
 </p>
 <div class="col-md-12">
 <div class="bs-callout bs-callout-portfolio">
@@ -166,8 +166,8 @@ loadCSS("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min
 </div>
 <div class="col-md-6">
 <p>
-<a class="btn btn-danger" href="https://www.google.com/design/spec/material-design/introduction.html"><i class="fa fa-google"></i> 머테리얼 디자인</a>을 베이스로 하여, 모든 디바이스에서 보기 좋도록 반응형 웹으로 만들었습니다.
-HTML5와 CSS3와 메인으로 하며, 불필요한 프레임워크 및 코드들은 차차 줄여 나갈 계획입니다.<br>
+<a class="btn btn-danger" href="https://www.google.com/design/spec/material-design/introduction.html"><i class="fa fa-google"></i> 머테리얼 디자인</a>을 베이스로 하여, 모든 디바이스에서 보기 좋은 반응형 웹으로 만들었습니다.
+HTML5와 CSS3와 메인으로, 불필요한 프레임워크 및 코드들은 차차 줄여 나갈 계획입니다.<br>
 </p>
 </div>
 </div>
@@ -175,13 +175,13 @@ HTML5와 CSS3와 메인으로 하며, 불필요한 프레임워크 및 코드들
 <div class="bs-callout bs-callout-portfolio">
 <i>RESTful&Async 웹 애플리케이션</i>
 </div><div class="col-md-6">
-<p>RESTful한 웹 서비스를 추구합니다.
-Vert.x 서버에서 헤더와 응답 코드를 적절히 사용도록 코딩되어 있습니다.<br>
+<p>RESTful한 웹 서비스를 추구하여
+Vert.x 서버에서 헤더와 응답 코드를 적절히 보내도록 코딩했습니다. <br>
 그리고 CSS, Font, Javascript, Image 등
 이 블로그를 구성하는 모든 콘텐츠는 비동기식으로 로딩됩니다.
-그 어떤 콘텐츠도, 그 콘텐츠가 로딩되는 동안 다른 콘텐츠를 가리거나 막지 않습니다.<br>
-마지막으로, 불러오는 이미지들은 압축되어 있으며, 그 파일 형식은 용도에 따라 PNG, JPG, SVG 등으로 알맞게 나눠져 있습니다.
-다만, 2016.02.09 현재 CDN을 사용하고 있지 않습니다. 이 부분은 Amazon CloudFire를 사용하여 보완할 예정입니다.</p>
+그 어떤 콘텐츠도 로딩되는 동안 다른 콘텐츠를 가리거나 막지 않습니다.<br>
+마지막으로, 불러오는 이미지들은 압축되어 있으며 그 파일 형식은 용도에 따라 PNG, JPG, SVG 등으로 알맞게 나눠져 있습니다.
+다만, 2016.02.09 현재까지는 CDN을 사용하고 있지 않습니다. 이 부분은 Amazon CloudFire를 사용하여 보완할 예정입니다.</p>
 </div>
 <div class="col-md-6">
 <img class="img-etc round-border" src="static/imgs/dxy-testresult-min.png">
@@ -207,10 +207,10 @@ JSP와 톰캣 기반의 사내 출퇴근 시스템, WordPress 기반의 사내 �
 <h2>어학 능력</h2>
 <h3>사용하는 언어들은 다음과 같은 숙련도를 가지고 있습니다.</h3>
 </div>
- <div class="btn-group btn-group-justified">
-  <a class="btn btn-success">능숙함</a>
-  <a class="btn btn-info">보통</a>
-  <a class="btn btn-warning">서투름</a>
+<div class="btn-group btn-group-justified">
+<a class="btn btn-success">능숙함</a>
+<a class="btn btn-info">보통</a>
+<a class="btn btn-warning">서투름</a>
 </div>
 <div>
 <ul class="logos">
@@ -223,13 +223,13 @@ JSP와 톰캣 기반의 사내 출퇴근 시스템, WordPress 기반의 사내 �
 한국어는 모국어입니다. 늘 바르고 정확한 언어를 사용하기 위해서 노력하고 있습니다.</P>
 <p><i class="fa fa-commenting fa-lg"></i>
 일본어는 가장 능숙한 외국어입니다. 1년 이상 일본에서 살았습니다. 다소 부족하지만 원어민에 가까운 수준입니다.
-7년 전부터 공부를 시작하여, 2010년에 JLPT N1 자격증을 취득하였습니다.
-또한 2012년도에 일본 간세이가쿠인 대학교에 교환 유학을 다녀왔으며, 현재 일본에서 살고 있습니다.</P>
+7년 전부터 공부를 시작해서 2010년에 JLPT N1 자격증을 취득하였습니다.
+또한 2012년도에 일본 간세이가쿠인 대학교에 교환 유학을 다녀왔으며 현재 일본에서 살고 있습니다.</P>
 <p><i class="fa fa-commenting fa-lg"></i>
 영어는 두 번째로 능숙한 외국어입니다. 1년 동안 캐나다 벤쿠버에서 살았습니다. 
 일상적인 회화, 읽기, 쓰기에는 문제가 없는 수준입니다.
-예를 들자면, 영어로 일상 회화를 나누고, 스택 오버플로우에서 질문을 읽고·쓰는 데 문제가 없습니다.
-다만, 아직 전문적인 뉴스 기사를 읽고 해석하는 데는 다소 시간이 걸립니다.</P>
+예를 들자면, 영어로 일상 회화를 나누고 스택 오버플로우에서 질문을 읽고·쓰는 데 문제가 없습니다.
+다만 아직 전문적인 뉴스 기사를 읽고 해석하는 데는 다소 시간이 걸립니다.</P>
 </div>
 <footer class="blog-footer">
 <p>2016, Dinwy. All Rights Reserved.</p>
@@ -242,7 +242,7 @@ JSP와 톰캣 기반의 사내 출퇴근 시스템, WordPress 기반의 사내 �
 //window.scrollTo(0,document.body.scrollHeight);
 </script>
 <script async src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
-<script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script async src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,6 +1,11 @@
 hr{
 border:1px dotted black;
 }
+p{
+text-align:left;
+margin: 10px !important;
+padding:5px;
+}
 .row{
 margin-top:15px;
 }
@@ -25,8 +30,17 @@ border-radius: 5px;
 background-image: url("//i.imgur.com/6y5Be9F.jpg");
 background-repeat: no-repeat;
 background-attachment: fixed;
+background-position: 50% 50%;	
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
 background-size: cover;
 }
+
+@media (max-width: @iphone-screen) {
+background-attachment: scroll;
+}
+
 .img-etc{
 max-height:400px;
 box-shadow: 2px 1px 0px rgb(67, 160, 71), 5px 4px 0px rgba(0, 0, 0, 0.15);
@@ -57,11 +71,6 @@ transition: all 2.4s ease 0s;
 .favicon{
 height:300px;
 }
-p{
-text-align:initial;
-margin: 10px !important;
-padding:5px;
-}
 
 .float-right{
 float:inherit !important;
@@ -77,7 +86,7 @@ float:right !important;
 border-radius: 5%;
 min-width: 100px;
 max-width: 200px;
-height: 100px;
+max-height: 100px;
 -webkit-transition:all 1.4s ease 0s;
 transition: all 1.4s ease 0s;
 padding: 10px 0px 10px 0px;
